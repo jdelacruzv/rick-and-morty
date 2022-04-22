@@ -6,7 +6,7 @@ export type Props = {
   character: Character;
 };
 
-export const Card: React.FC<Props> = (props) => {
+export const CharacterCard: React.FC<Props> = (props) => {
   const { character } = props;
   return (
     <li>
@@ -22,4 +22,4 @@ export const Card: React.FC<Props> = (props) => {
   );
 };
 
-export default Card;
+export default CharacterCard;

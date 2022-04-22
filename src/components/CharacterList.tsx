@@ -1,6 +1,6 @@
 import React from 'react';
 import { Character } from '../types';
-import { Card } from './CharacterCard';
+import { CharacterCard } from "./CharacterCard";
 import '../App.css';
 
 export const CharacterList = () => {
@@ -22,7 +22,7 @@ export const CharacterList = () => {
     <>
       <ul className="character-list">
         {characterList.map((character) => (
-          <Card key={character.id} character={character} />
+          <CharacterCard key={character.id} character={character} />
         ))}
       </ul>
     </>
