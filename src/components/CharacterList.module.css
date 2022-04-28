@@ -14,3 +14,22 @@
 	padding: 0;
 	max-width: 1024px;
 }
+
+.next {
+	background-color: #0EA163;
+	color: white;
+	font-size: 1.2rem;
+	padding: 0.6em 0.8em;
+	margin: 2em 1em 1em;
+	border: none;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+
+.next:hover {
+	background-color: #13B173;
+}
+
+.next:focus {
+	outline: none;
+}

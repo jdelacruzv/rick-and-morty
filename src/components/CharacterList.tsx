@@ -7,6 +7,7 @@ import style from "./CharacterList.module.css";
 const CharacterList = () => {
 	const [characterList, setCharacterList] = useState<Character[]>([]);
 	const [characterSearch, setCharacterSearch] = useState<string>("");
+	const [characterPage, setCharacterPage] = useState<number>(1);
 
 	const normalizaSearch = characterSearch.toLowerCase();
 
@@ -25,14 +26,21 @@ const CharacterList = () => {
 			<p className={style.message}>No hay personajes...</p>
 		);
 
+	const nextCharacterPage = async () => {
+		const nextCharImg = await fetchData(characterPage + 1);
+		setCharacterPage(() => characterPage + 1);
+		setCharacterList([...characterList, ...nextCharImg.results]);
+	};
+
+	const fetchData = async (page: number) => (
+		await fetch(`https://rickandmortyapi.com/api/character/?page=${page}&limit=20`)
+	).json();
+
 	useEffect(() => {
 		// función autoinvocada
 		(async () => {
-			let data = await fetch(`https://rickandmortyapi.com/api/character/`).then(
-				(res) => res.json()
-			);
+			const data = await fetchData(1);
 			setCharacterList(data.results);
-			console.log(data.results);
 		})();
 	}, []);
 
@@ -40,6 +48,9 @@ const CharacterList = () => {
 		<>
 			<SearchInput setCharacterSearch={setCharacterSearch} />
 			<ul className={style.list}>{characterRendered}</ul>
+			<button className={style.next} onClick={nextCharacterPage}>
+				Next character
+			</button>
 		</>
 	);
 };
