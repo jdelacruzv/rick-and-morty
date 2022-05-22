@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Character from "../types";
 import CharacterCard from "./CharacterCard";
 import SearchInput from "./SearchInput";
+import ScrollUpButton from "./ScrollUpButton";
 import style from "./CharacterList.module.css";
 
 const CharacterList = () => {
@@ -51,6 +52,7 @@ const CharacterList = () => {
 			<button className={style.next} onClick={nextCharacterPage}>
 				Next character
 			</button>
+			<ScrollUpButton />
 		</>
 	);
 };

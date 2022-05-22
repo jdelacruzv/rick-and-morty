@@ -1,0 +1,23 @@
+.icon__up {
+  position: fixed;
+  bottom: .5rem;
+  right: .5rem;
+  z-index: 1000;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  animation: movebtnup 2.5s ease-in-out infinite;
+  transition: all .5s ease-in-out;
+}
+
+@keyframes movebtnup {
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-20px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
