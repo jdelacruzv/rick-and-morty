@@ -1,6 +1,10 @@
 import style from "./SearchInput.module.css";
 
-const SearchInput = ({ setCharacterSearch }) => (
+type SearchInputProps = {
+	setCharacterSearch: (ev: string) => void;
+};
+
+const SearchInput = ({ setCharacterSearch }: SearchInputProps) => (
 	<input
 		className={style.search}
 		type="text"

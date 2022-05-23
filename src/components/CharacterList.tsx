@@ -14,8 +14,7 @@ const CharacterList = () => {
 
 	const characterFiltered = characterSearch
 		? characterList.filter((character) =>
-				character.name.toLowerCase().startsWith(normalizaSearch)
-		  )
+				character.name.toLowerCase().startsWith(normalizaSearch))
 		: characterList;
 
 	const characterRendered =
