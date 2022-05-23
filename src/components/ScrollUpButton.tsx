@@ -3,7 +3,7 @@ import { useState } from "react";
 import style from "./ScrollUpButton.module.css";
 
 const ScrollUpButton = () => {
-	const [showBtnUp, setShowBtnUp] = useState(false);
+	const [showBtnUp, setShowBtnUp] = useState<boolean>(false);
 
 	window.addEventListener("scroll", () => {
 		window.scrollY > 300 ? setShowBtnUp(true) : setShowBtnUp(false);
