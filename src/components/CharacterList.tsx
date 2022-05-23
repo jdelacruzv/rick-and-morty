@@ -4,6 +4,7 @@ import CharacterCard from "./CharacterCard";
 import SearchInput from "./SearchInput";
 import ScrollUpButton from "./ScrollUpButton";
 import style from "./CharacterList.module.css";
+import Spinner from "./Spinner";
 
 const CharacterList = () => {
 	const [characterList, setCharacterList] = useState<Character[]>([]);
@@ -17,14 +18,10 @@ const CharacterList = () => {
 				character.name.toLowerCase().startsWith(normalizaSearch))
 		: characterList;
 
-	const characterRendered =
-		characterFiltered.length > 0 ? (
-			characterFiltered.map((character) => (
-				<CharacterCard key={character.id} character={character} />
-			))
-		) : (
-			<p className={style.message}>No hay personajes...</p>
-		);
+	const characterRendered = characterFiltered.length > 0 
+		? characterFiltered.map((character) => (
+				<CharacterCard key={character.id} character={character} />))
+		: <Spinner />
 
 	const nextCharacterPage = async () => {
 		const nextCharImg = await fetchData(characterPage + 1);
@@ -46,6 +43,7 @@ const CharacterList = () => {
 
 	return (
 		<>
+			<h1>Rick And Morty</h1>
 			<SearchInput setCharacterSearch={setCharacterSearch} />
 			<ul className={style.list}>{characterRendered}</ul>
 			<button className={style.next} onClick={nextCharacterPage}>
